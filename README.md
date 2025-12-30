@@ -4,7 +4,7 @@ A small Go module for running batched HTTP requests with concurrency limits, per
 
 The core package is:
 
-- `test-suite/batchhttp`
+- `batchhttp`
 
 It is designed to be production-friendly:
 - accepts standard `net/http` requests (`*http.Request`)
@@ -60,7 +60,7 @@ import (
 	"net/http"
 	"time"
 
-	"test-suite/batchhttp"
+	"github.com/mightatnight/batchhttp"
 )
 
 func main() {
@@ -112,7 +112,7 @@ import (
 	"net/http"
 	"time"
 
-	"test-suite/batchhttp"
+	"github.com/mightatnight/batchhttp"
 )
 
 type tokenResp struct {
@@ -278,11 +278,3 @@ batchhttp.WriteText(os.Stdout, results, summary, opt)
 - For high throughput tests, tune your HTTP transport and use `DrainBody=true`.
 - Success in `Summary` is currently counted as: `Err == nil` and `StatusCode < 500`.
   Adjust your own interpretation by post-processing `[]RunResult` if you need stricter rules.
-
----
-
-## Directory layout
-
-- `batchhttp/` — main package implementation (`Runner`, retry policy, formatting)
-
----
